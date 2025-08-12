@@ -55,30 +55,31 @@ Among these, GON4L was the most significantly enriched protein in both WT and SA
 🔹 [Figure 1. Volcano plot: WT vs. SANT comparison](./graphs/Volcano_plot_WT_VS_D1.pdf)
 🔹 [Figure 2. Volcano plot: SANT vs. D1 comparison](./graphs/Volcano_plot_SANT_VS_D1.pdf)
 
-GON4L is known to localize to Histone Locus Bodies (HLBs) — subnuclear compartments also associated with CRAMP1. Given this spatial overlap and the functional relevance in H1 regulation, we investigated the interaction further using AlphaFold3.
-We modeled the CRAMP1–GON4L complex using the full-length sequences of both proteins via the public AlphaFold3 server. The predicted complex revealed a potential interface, though the overall model confidence was low, as indicated by pLDDT coloring and the PAE plot (Figure 3 and Figure 4).
+GON4L is known to localize to Histone Locus Bodies (HLBs) — subnuclear compartments also associated with CRAMP1. Given this spatial overlap and GON4L's involvement in H1 regulation, we investigated the CRAMP1–GON4L interaction further using AlphaFold3.
+
+We initially modeled the full-length CRAMP1–GON4L complex using the public AlphaFold3 server. The resulting prediction revealed a potential interaction interface, but overall model confidence was low, as indicated by the pLDDT scores and PAE plot (Figure 3 and Figure 4).
 
 🔹 [Figure 3. PAE plot of full-length CRAMP1–GON4L interaction](./graphs/CRAMP1_GON4L_interaction_PAE.pdf)
 🔹 [Figure 4. pLDDT confidence scores for full-length model](./graphs/CRAMP1_GON4L_interaction_pLDDT.pdf)
 
-Using insights from the PAE plot, we isolated interacting regions:
-CRAMP1: residues 300-800
-GON4L: residues 1455–2024
-These fragments were re-modeled in AlphaFold3, producing a fragment-based model with markedly improved confidence. The fragment PAE plot showed tighter alignment at the predicted interface (Figure 5), while the pLDDT map confirmed the improved quality of the model (Figure 6).
+Based on the PAE analysis, we refined our approach by focusing on two regions of CRAMP1 (residues 310–440 and 660–760) and one region of GON4L (residues 1590–1810), which appeared to mediate the interaction.
+
+These fragments were re-modeled using AlphaFold3. The new fragment-based model showed a marked increase in confidence, with a well-defined predicted interface. The PAE plot revealed tighter alignment at the interaction site (Figure 5), and pLDDT coloring confirmed overall high model quality (Figure 6).
 
 🔹 [Figure 5. PAE plot of CRAMP1–GON4L interacting fragments](./graphs/CRAMP1_GON4L_fragments_PAE.pdf)
 🔹 [Figure 6. pLDDT map for fragment-only structure](./graphs/CRAMP1_GON4L_fragments_interaction_pLDDT.pdf)
-
-Additionally, we visualized the structure colored by chain (Figure 7), allowing clearer interpretation of the interaction geometry.
-
 🔹 [Figure 7. CRAMP1–GON4L fragments colored by chain](./graphs/CRAMP1_GON4L_fragments_interaction_colored.pdf)
 
-To quantify model confidence, we compared mean pLDDT and the percentage of high-confidence residues (pLDDT > 70) across the full and fragment models (Figure 8 and Figure 9). The fragment model had both higher average confidence and a greater proportion of well-modeled residues.
+Interestingly, the identified CRAMP1 fragments align closely with the annotated D1 and D2 domains, suggesting that the interaction with GON4L is mediated directly through these domains. This provides a mechanistic explanation for CRAMP1’s localization to HLBs via GON4L. However, this modeling does not reveal any direct involvement of the SANT domain, and its functional role in the context of HLB targeting remains unclear.
+
+Notably, we also detected NPAT, a well-known HLB-associated protein, in our MS dataset. However, AlphaFold3 did not predict any direct interaction between CRAMP1 and NPAT (data not shown), suggesting that the CRAMP1–NPAT association may be indirect and possibly mediated by GON4L, a known NPAT interactor.
+
+To quantify model confidence, we compared the mean pLDDT and the percentage of residues with pLDDT > 70 between the full-length and fragment-based models.
 
 🔹 [Figure 8. Mean pLDDT comparison: full vs. fragment model](./graphs/Full_protein_VS_fragments_mean_pLDDT.pdf)
 🔹 [Figure 9. % of residues with pLDDT > 70: full vs. fragment model](./graphs/Full_protein_VS_fragments_pLDDT>70.pdf)
 
-Together, these results support the presence of a direct, confidently modeled interaction between CRAMP1 and GON4L, dependent on the D1 domain of CRAMP1. The focused AlphaFold3 prediction of the interacting fragments provides higher-resolution structural insight, reinforcing the functional relevance of this interaction.
+Together, These results support a direct, high-confidence interaction between CRAMP1 and GON4L, dependent on CRAMP1’s D1 and D2 domains, and suggest that this interaction plays a key role in CRAMP1 recruitment to HLBs.
 ## Repository structure
 📦 IP-MS-data-analysis-and-Alphafold-validation/
 │
