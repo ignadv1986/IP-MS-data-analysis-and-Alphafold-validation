@@ -47,4 +47,4 @@ GON4L [(Q3T8J9)](https://www.uniprot.org/uniprotkb/Q3T8J9/entry)
 - Only the predicted interacting regions were resubmitted to AlphaFold3 to improve visualization clarity.
 - The same analysis steps (as above) were repeated for this subset.
 ## Results
-"The AlphaFold model of the full-length CRAMP1–GON4L complex had an overall low confidence (mean pLDDT: 43.8), with only 16.8% of residues scoring above the 70 threshold. In contrast, the fragment model focusing on the predicted interaction regions improved the average pLDDT to 49.7, with 27.9% of residues surpassing the confidence threshold. Although confidence remains moderate, this enrichment supports focusing structural analysis on the trimmed model."
+
