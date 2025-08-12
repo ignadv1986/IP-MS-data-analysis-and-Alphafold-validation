@@ -28,10 +28,12 @@ To study CRAMP1 interactions, we generated cell lines stably expressing GFP-tagg
 - Enriched proteins in WT samples (vs. either mutant) were filtered for further analysis.
 2) **Visualization of Enrichment:**
 Volcano plots were generated in GraphPad PRISM for the key comparisons.
+
 3) **Protein Sequence Retrieval:**
 Sequences for proteins of interest — CRAMP1 and GON4L — were retrieved from:
 CRAMP1 [(Q96RY5)](https://www.uniprot.org/uniprotkb/Q96RY5/entry)
 GON4L [(Q3T8J9)](https://www.uniprot.org/uniprotkb/Q3T8J9/entry)
+
 4) **AlphaFold3 Modeling:**
 - The CRAMP1–GON4L interaction was predicted using AlphaFold3 via the public server.
 - Full-length sequences were submitted to generate a complex model.
@@ -47,4 +49,59 @@ GON4L [(Q3T8J9)](https://www.uniprot.org/uniprotkb/Q3T8J9/entry)
 - Only the predicted interacting regions were resubmitted to AlphaFold3 to improve visualization clarity.
 - The same analysis steps (as above) were repeated for this subset.
 ## Results
+We performed IP-MS on CRAMP1 wild-type (WT) and two deletion mutants lacking either the SANT or D1 domains. The mass spectrometry data, pre-processed to compute Z-scores and p-values, was filtered using Python. Proteins enriched in WT samples (compared to SANT or D1) were identified using a false discovery rate of 0.01.
+Among these, GON4L was the most significantly enriched protein in both WT and SANT samples when compared to the D1 mutant, indicating a D1 domain-dependent interaction (Figure 1 and Figure 2).
+
+🔹 [Figure 1. Volcano plot: WT vs. SANT comparison](./graphs/Volcano_plot_WT_VS_D1.pdf)
+🔹 [Figure 2. Volcano plot: SANT vs. D1 comparison](./graphs/Volcano_plot_SANT_VS_D1.pdf)
+
+GON4L is known to localize to Histone Locus Bodies (HLBs) — subnuclear compartments also associated with CRAMP1. Given this spatial overlap and the functional relevance in H1 regulation, we investigated the interaction further using AlphaFold3.
+We modeled the CRAMP1–GON4L complex using the full-length sequences of both proteins via the public AlphaFold3 server. The predicted complex revealed a potential interface, though the overall model confidence was low, as indicated by pLDDT coloring and the PAE plot (Figure 3 and Figure 4).
+
+🔹 [Figure 3. PAE plot of full-length CRAMP1–GON4L interaction](./graphs/CRAMP1_GON4L_interaction_PAE.pdf)
+🔹 [Figure 4. pLDDT confidence scores for full-length model](./graphs/CRAMP1_GON4L_interaction_pLDDT.pdf)
+
+Using insights from the PAE plot, we isolated interacting regions:
+CRAMP1: residues 300-800
+GON4L: residues 1455–2024
+These fragments were re-modeled in AlphaFold3, producing a fragment-based model with markedly improved confidence. The fragment PAE plot showed tighter alignment at the predicted interface (Figure 5), while the pLDDT map confirmed the improved quality of the model (Figure 6).
+
+🔹 [Figure 5. PAE plot of CRAMP1–GON4L interacting fragments](./graphs/CRAMP1_GON4L_fragments_PAE.pdf)
+🔹 [Figure 6. pLDDT map for fragment-only structure](./graphs/CRAMP1_GON4L_fragments_interaction_pLDDT.pdf)
+
+Additionally, we visualized the structure colored by chain (Figure 7), allowing clearer interpretation of the interaction geometry.
+
+🔹 [Figure 7. CRAMP1–GON4L fragments colored by chain](./graphs/CRAMP1_GON4L_fragments_interaction_colored.pdf)
+
+To quantify model confidence, we compared mean pLDDT and the percentage of high-confidence residues (pLDDT > 70) across the full and fragment models (Figure 8 and Figure 9). The fragment model had both higher average confidence and a greater proportion of well-modeled residues.
+
+🔹 [Figure 8. Mean pLDDT comparison: full vs. fragment model](./graphs/Full_protein_VS_fragments_mean_pLDDT.pdf)
+🔹 [Figure 9. % of residues with pLDDT > 70: full vs. fragment model](./graphs/Full_protein_VS_fragments_pLDDT>70.pdf)
+
+Together, these results support the presence of a direct, confidently modeled interaction between CRAMP1 and GON4L, dependent on the D1 domain of CRAMP1. The focused AlphaFold3 prediction of the interacting fragments provides higher-resolution structural insight, reinforcing the functional relevance of this interaction.
+## Repository structure
+📦 IP-MS-data-analysis-and-Alphafold-validation/
+│
+├── 📁 data/
+│   ├── MS dataset.xlsx
+│   └── volcano_all_comparisons.xlsx
+│
+├── 📁 python_analysis/
+│   ├── MS_data_processing.ipynb
+│   └── CRAMP1_GON4L_full_VS_fragment.ipynb
+│
+├── 📁 figures/
+│   ├── Volcano plot WT VS SANT.pdf
+│   ├── Volcano plot SANT VS D1.pdf
+│   ├── CRAMP1_GON4L_interaction_PAE.pdf
+│   ├── CRAMP1_GON4L_interaction_pLDDT.pdf
+│   ├── CRAMP1_GON4L_fragments_PAE.pdf
+│   ├── CRAMP1_GON4L_fragments_interaction_pLDDT.pdf
+│   ├── CRAMP1_GON4L_fragments_interaction_colored.pdf
+│   ├── Full protein VS fragments mean pLDDT.pdf
+│   └── Full protein VS fragments pLDDT > 70.pdf
+│
+├── README.md
+└── LICENSE (optional)
+
 
